@@ -1,4 +1,4 @@
-const gui = require("gui")
+import * as gui from "gui"
 
 const YueWindow = gui.Window.create({})
 
