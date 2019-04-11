@@ -1,12 +1,12 @@
-import IInputBoundary from "./Input/IInputBoundary"
-import IOutputBoundary from "./Output/IOutputBoundary"
+import IInputPort from "./InputPort/IInputPort"
+import IOutputPort from "./OutputPort/IOutputPort"
 import Expression from "../../Entities/Expression"
 
-class UpdateExpression implements IInputBoundary {
+class UpdateExpression implements IInputPort {
   _expression: Expression
-  _outputBoundary: IOutputBoundary 
+  _outputBoundary: IOutputPort 
 
-  constructor (expression: Expression, outputBoundary: IOutputBoundary) {
+  constructor (expression: Expression, outputBoundary: IOutputPort) {
     this._expression = expression
     this._outputBoundary = outputBoundary
   }
