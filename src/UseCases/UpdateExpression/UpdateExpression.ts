@@ -3,32 +3,32 @@ import IOutputPort from "./OutputPort/IOutputPort"
 import Expression from "../../Entities/Expression"
 
 class UpdateExpression implements IInputPort {
-  _expression: Expression
-  _outputBoundary: IOutputPort 
+  private expression: Expression
+  private outputBoundary: IOutputPort 
 
-  constructor (expression: Expression, outputBoundary: IOutputPort) {
-    this._expression = expression
-    this._outputBoundary = outputBoundary
+  constructor (_expression: Expression, _outputBoundary: IOutputPort) {
+    this.expression = _expression
+    this.outputBoundary = _outputBoundary
   }
   
   // currently only appends values to the expression
   updateExpression = (value: string): void => {
-    let newVal:string = this._getValue() + value
-    this._setValue(newVal)
-    this._displayValue(newVal)
+    let newVal:string = this.getValue() + value
+    this.setValue(newVal)
+    this.displayValue(newVal)
   }
 
   // external method calls
-  _setValue (newVal: string) {
-    return this._expression.setValue(newVal)
+  private setValue (newVal: string) {
+    return this.expression.setValue(newVal)
   }
 
-  _getValue () {
-    return this._expression.getValue()
+  private getValue () {
+    return this.expression.getValue()
   }
 
-  _displayValue (value: string) {
-    return this._outputBoundary.displayValue(value)
+  private displayValue (value: string) {
+    return this.outputBoundary.displayValue(value)
   }
 }
 
