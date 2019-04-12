@@ -4,11 +4,11 @@ import Expression from "../../Entities/Expression"
 
 class UpdateExpression implements IInputPort {
   private expression: Expression
-  private outputBoundary: IOutputPort 
+  private outputPort: IOutputPort 
 
-  constructor (_expression: Expression, _outputBoundary: IOutputPort) {
+  constructor (_expression: Expression, _outputPort: IOutputPort) {
     this.expression = _expression
-    this.outputBoundary = _outputBoundary
+    this.outputPort = _outputPort
   }
   
   // currently only appends values to the expression
@@ -28,7 +28,7 @@ class UpdateExpression implements IInputPort {
   }
 
   private displayValue (value: string) {
-    return this.outputBoundary.displayValue(value)
+    return this.outputPort.displayValue(value)
   }
 }
 
