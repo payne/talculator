@@ -10,8 +10,9 @@ class Keypad {
 
   getKeyPad (): View[] {
     let digits = ["0","1","2","3","4","5","6","7","8","9"]
-    let operators = ["+", "-", "/", "x", "=", "."]
-    let keys = digits.concat(operators)
+    let operators = ["+", "-", "/", "x", "="]
+    let otherKeys = [".","AC","CE"]
+    let keys = digits.concat(operators, otherKeys)
     let buttons :View[] = []
 
     keys.map((key) => {
