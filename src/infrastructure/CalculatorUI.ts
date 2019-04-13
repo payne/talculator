@@ -33,8 +33,9 @@ class CalculatorUI {
     let win = Window.create({})
     win.setContentSize({ width: 400, height: 300 })
     win.setTitle("Simple Calculator")
-    win.activate()
+    win.setResizable(false)
     win.onClose = () => MessageLoop.quit()
+    win.activate()
     return win
   }
 
