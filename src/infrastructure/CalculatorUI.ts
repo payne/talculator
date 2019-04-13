@@ -17,13 +17,15 @@ class CalculatorUI {
     let mainContainer = this.createContainer({})
     let displayContainer = this.createContainer({})
     let keypadContainer = this.createContainer({})
+
     displayContainer.setStyle({backgroundColor: "#fff", margin: "10px",
     paddingRight: "15px", height: "50px", display: "flex", boxSizing: "border-box",
     flexDirection: "row-reverse"})
-    this.addChildViewsToContainer(displayContainer, this.getDisplay())
-    this.addChildViewsToContainer(keypadContainer, this.getKeypad())
     keypadContainer.setStyle({ width: "400px", display: "flex", flexDirection: "row"
-    , flexWrap: "wrap", justifyContent: "center"})
+    ,flexWrap: "wrap", justifyContent: "center"})
+
+    this.addChildViewsToContainer(displayContainer, this.getDisplayView())
+    this.addChildViewsToContainer(keypadContainer, this.getKeypadView())    
     this.addChildViewsToContainer(mainContainer, [displayContainer, keypadContainer])
     win.setContentView(mainContainer)
     this.startMessageLoop()
@@ -63,12 +65,12 @@ class CalculatorUI {
 
   //external method calls 
 
-  private getDisplay () {
-    return this.display.getDisplay()
+  private getDisplayView () {
+    return this.display.getDisplayView()
   }
 
-  private getKeypad () {
-    return this.keypad.getKeyPad()
+  private getKeypadView () {
+    return this.keypad.getKeypadView()
   }
 
 }
