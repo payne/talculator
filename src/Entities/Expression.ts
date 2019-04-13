@@ -1,12 +1,33 @@
 class Expression {
-  _value: string = "0"
+  private value: string = "0"
 
-  setValue = (newValue: string) => {
-    this._value = newValue
+  setValue (newValue: string) {
+    this.value = newValue
   }
 
-  getValue = () => {
-    return this._value
+  getValue () {
+    return this.value
+  }
+
+  getLength () {
+    return this.value.length
+  }
+
+  getFinalValue () {
+    return this.value[-1]
+  }
+
+  isZero () {
+    return this.value === "0"
+  }
+
+  isNumber () {
+    let num = parseInt(this.value)
+    return typeof num === "number"
+  }
+
+  getFirstToPenultimateValue () {
+    return this.value.substr(0, this.getLength() - 1)
   }
 }
 
