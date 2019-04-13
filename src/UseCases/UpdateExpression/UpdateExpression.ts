@@ -1,35 +1,42 @@
-import IInputPort from "./InputPort/IInputPort"
-import IOutputPort from "./OutputPort/IOutputPort"
-import Expression from "../../Entities/Expression"
+import IInputPort from "./InputPort/IInputPort";
+import IOutputPort from "./OutputPort/IOutputPort";
+import Expression from "../../Entities/Expression";
 
 class UpdateExpression implements IInputPort {
-  private expression: Expression
-  private outputPort: IOutputPort 
+  private expression: Expression;
+  private outputPort: IOutputPort;
 
-  constructor (_expression: Expression, _outputPort: IOutputPort) {
-    this.expression = _expression
-    this.outputPort = _outputPort
-  }
-  
-  // currently only appends values to the expression
-  updateExpression = (value: string): void => {
-    let newVal:string = this.getValue() + value
-    this.setValue(newVal)
-    this.displayValue(newVal)
+  constructor(_expression: Expression, _outputPort: IOutputPort) {
+    this.expression = _expression;
+    this.outputPort = _outputPort;
   }
 
-  // external method calls
-  private setValue (newVal: string) {
-    return this.expression.setValue(newVal)
-  }
+  updateExpression = (newVal: string): void => {
+    let newExpression = this.getNewExpression(newVal);
 
-  private getValue () {
-    return this.expression.getValue()
-  }
+    this.expression.setValue(newExpression);
+    this.outputPort.displayValue(newExpression);
+  };
 
-  private displayValue (value: string) {
-    return this.outputPort.displayValue(value)
+  private getNewExpression(newVal: string): string {
+    let newExpression = ""
+    let currentExpression = this.expression.getValue()
+    let newNumber = parseInt(newVal)
+
+    if (this.expression.isZero() && newNumber) {
+      newExpression = newVal;
+    } else if (newVal === "AC") {
+      newExpression = "0";
+    } else if (newVal === "CE") {
+      newExpression = this.expression.getFirstToPenultimateValue();
+      if (!newExpression) newExpression = "0";
+    } else if (newVal !== "." && !newNumber) {
+      newExpression = `${currentExpression} ${newVal} `
+    } else {
+      newExpression = currentExpression + newVal;
+    }
+    return newExpression;
   }
 }
 
-export default UpdateExpression
+export default UpdateExpression;
