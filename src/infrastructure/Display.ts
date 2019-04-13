@@ -1,4 +1,4 @@
-import {Label} from "gui"
+import {Label, View} from "gui"
 import IResponse from "../Boundaries/OutputPort/IResponse";
 
 class Display implements IResponse {
@@ -8,7 +8,7 @@ class Display implements IResponse {
     this.label = Label.create("0")
   }
 
-  getDisplay () {
+  getDisplayView (): View {
     return this.label
   }
 
