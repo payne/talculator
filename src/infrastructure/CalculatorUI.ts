@@ -1,4 +1,4 @@
-import {Window, Container, View, Button, MessageLoop} from "gui"
+import {Window, Container, View, MessageLoop} from "gui"
 import { isArray } from "util";
 import Keypad from "./Keypad";
 import Display from "./Display";
@@ -23,7 +23,7 @@ class CalculatorUI {
     this.addChildViewsToContainer(displayContainer, this.getDisplay())
     this.addChildViewsToContainer(keypadContainer, this.getKeypad())
     keypadContainer.setStyle({ width: "400px", display: "flex", flexDirection: "row"
-    , flexWrap: "wrap", justifyContent: "space-between"})
+    , flexWrap: "wrap", justifyContent: "center"})
     this.addChildViewsToContainer(mainContainer, [displayContainer, keypadContainer])
     win.setContentView(mainContainer)
     this.startMessageLoop()
@@ -31,7 +31,7 @@ class CalculatorUI {
 
   private createWindow () {
     let win = Window.create({})
-    win.setContentSize({ width: 400, height: 300 })
+    win.setContentSize({ width: 400, height: 350 })
     win.setTitle("Simple Calculator")
     win.setResizable(false)
     win.onClose = () => MessageLoop.quit()
