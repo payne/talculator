@@ -18,7 +18,7 @@ class Expression {
     return this.value.length
   }
 
-  getFinalValue () {
+  getLastValue () {
     return this.value[-1]
   }
 
