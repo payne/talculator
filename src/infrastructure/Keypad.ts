@@ -17,17 +17,12 @@ class Keypad {
 
     keys.map((key) => {
       let button = Button.create(key)
-      button.onClick = () => this.updateExpression(key)
+      button.onClick = () => this.controller.updateExpression(key)
       button.setStyle({width: "20%", margin: "10px"})
       buttons.push(button)
     })
     
     return buttons
-  }
-
-  //external method calls 
-  private updateExpression (val: string) {
-    return this.controller.updateExpression(val)
   }
 }
 
