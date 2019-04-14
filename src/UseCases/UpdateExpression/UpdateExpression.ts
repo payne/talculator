@@ -1,22 +1,22 @@
-import IInputPort from "./InputPort/IInputPort";
-import IOutputPort from "./OutputPort/IOutputPort";
-import Expression from "../../Entities/Expression";
+import IInputPort from "./InputPort/IInputPort"
+import IOutputPort from "./OutputPort/IOutputPort"
+import Expression from "../../Entities/Expression"
 
 class UpdateExpression implements IInputPort {
-  private expression: Expression;
-  private outputPort: IOutputPort;
+  private expression: Expression
+  private outputPort: IOutputPort
 
   constructor(_expression: Expression, _outputPort: IOutputPort) {
-    this.expression = _expression;
-    this.outputPort = _outputPort;
+    this.expression = _expression
+    this.outputPort = _outputPort
   }
 
   updateExpression = (newVal: string): void => {
-    let newExpression = this.getNewExpression(newVal);
+    let newExpression = this.getNewExpression(newVal)
 
-    this.expression.setValue(newExpression);
-    this.outputPort.displayValue(newExpression);
-  };
+    this.expression.setValue(newExpression)
+    this.outputPort.displayValue(newExpression)
+  }
 
   private getNewExpression(newVal: string): string {
     let newExpression = ""
@@ -24,19 +24,19 @@ class UpdateExpression implements IInputPort {
     let newNumber = parseInt(newVal)
 
     if (this.expression.isZero() && newNumber) {
-      newExpression = newVal;
+      newExpression = newVal
     } else if (newVal === "AC") {
-      newExpression = "0";
+      newExpression = "0"
     } else if (newVal === "CE") {
-      newExpression = this.expression.getFirstToPenultimateValue();
-      if (!newExpression) newExpression = "0";
+      newExpression = this.expression.getFirstToPenultimateValue()
+      if (!newExpression) newExpression = "0"
     } else if (newVal !== "." && !newNumber) {
       newExpression = `${currentExpression} ${newVal} `
     } else {
-      newExpression = currentExpression + newVal;
+      newExpression = currentExpression + newVal
     }
-    return newExpression;
+    return newExpression
   }
 }
 
-export default UpdateExpression;
+export default UpdateExpression

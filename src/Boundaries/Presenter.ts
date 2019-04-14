@@ -1,5 +1,5 @@
-import IOutputPort from "../UseCases/UpdateExpression/OutputPort/IOutputPort";
-import IResponse from "./OutputPort/IResponse";
+import IOutputPort from "../UseCases/UpdateExpression/OutputPort/IOutputPort"
+import IResponse from "./OutputPort/IResponse"
 
 class Presenter implements IOutputPort {
   private response: IResponse

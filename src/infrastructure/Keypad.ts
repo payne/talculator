@@ -1,5 +1,5 @@
 import {Button, View} from "gui"
-import Controller from "../Boundaries/Controller";
+import Controller from "../Boundaries/Controller"
 
 class Keypad {
   private controller: Controller

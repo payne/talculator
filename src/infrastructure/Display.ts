@@ -1,5 +1,5 @@
 import {Label, View} from "gui"
-import IResponse from "../Boundaries/OutputPort/IResponse";
+import IResponse from "../Boundaries/OutputPort/IResponse"
 
 class Display implements IResponse {
   private label: Label

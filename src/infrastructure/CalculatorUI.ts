@@ -1,7 +1,7 @@
 import {Window, Container, View, MessageLoop} from "gui"
-import { isArray } from "util";
-import Keypad from "./Keypad";
-import Display from "./Display";
+import { isArray } from "util"
+import Keypad from "./Keypad"
+import Display from "./Display"
 
 class CalculatorUI {
   private keypad: Keypad

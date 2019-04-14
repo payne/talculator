@@ -1,5 +1,5 @@
 import IInputPort from "../UseCases/UpdateExpression/InputPort/IInputPort"
-import IRequest from "./InputPort/IRequest";
+import IRequest from "./InputPort/IRequest"
 
 class Controller implements IRequest {
   private inputPort: IInputPort
