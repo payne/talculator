@@ -13,12 +13,7 @@ class Display implements IResponse {
   }
 
   presentValue(newVal: string) {
-    this.setText(newVal)
-  }
-
-  //external method calls 
-  private setText(newVal: string) {
-    return this.label.setText(newVal)
+    this.label.setText(newVal)
   }
 }
 
