@@ -27,7 +27,7 @@ class Expression {
   }
 
   isNumber () {
-    let num = parseInt(this.value)
+    let num = parseFloat(this.value)
     return typeof num === "number"
   }
 
