@@ -34,6 +34,21 @@ class Expression {
   getFirstToPenultimateValue () {
     return this.value.substr(0, this.getLength() - 1)
   }
+  
+  getLastNumber () {
+    let components = this.value.split(" ")
+    let l = components.length - 1
+    
+    while (l >= 0) {
+      let num = parseFloat(components[l])
+      if(!isNaN(num)) {
+        return components[l]
+      } else {
+        l -= 1
+      }
+    }
+    return
+  }
 }
 
 export default Expression
