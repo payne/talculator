@@ -24,8 +24,8 @@ class CalculatorUI {
     keypadContainer.setStyle({ width: "400px", display: "flex", flexDirection: "row"
     ,flexWrap: "wrap", justifyContent: "center"})
 
-    this.addChildViewsToContainer(displayContainer, this.getDisplayView())
-    this.addChildViewsToContainer(keypadContainer, this.getKeypadView())    
+    this.addChildViewsToContainer(displayContainer, this.display.getDisplayView())
+    this.addChildViewsToContainer(keypadContainer, this.keypad.getKeypadView())    
     this.addChildViewsToContainer(mainContainer, [displayContainer, keypadContainer])
     win.setContentView(mainContainer)
     this.startMessageLoop()
@@ -62,17 +62,6 @@ class CalculatorUI {
     }
     return container
   }
-
-  //external method calls 
-
-  private getDisplayView () {
-    return this.display.getDisplayView()
-  }
-
-  private getKeypadView () {
-    return this.keypad.getKeypadView()
-  }
-
 }
 
 export default CalculatorUI
