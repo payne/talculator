@@ -27,8 +27,11 @@ class Expression {
   }
 
   isNumber () {
-    let num = parseFloat(this.value)
-    return typeof num === "number"
+    let value = this.value
+
+    if(!value) return false
+
+    return (value.match(/\D/) === null)
   }
 
   getFirstToPenultimateValue () {
