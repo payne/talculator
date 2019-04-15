@@ -21,14 +21,17 @@ class Expression {
   getLastValue () {
     let components = this.value.split(" ")
     let l = components.length - 1
-    
+
+    // make sure that the last child is not an empty string
     while(l >= 0) {
-      if (components[l]) {
-        return components[l]
-      } else {
+    if (!components[l]) {
         l -= 1
+      } else {
+        break
       }
     }
+
+    return components[l]
   }
 
   isZero () {
