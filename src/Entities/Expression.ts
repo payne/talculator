@@ -19,7 +19,16 @@ class Expression {
   }
 
   getLastValue () {
-    return this.value[-1]
+    let components = this.value.split(" ")
+    let l = components.length - 1
+    
+    while(l >= 0) {
+      if (components[l]) {
+        return components[l]
+      } else {
+        l -= 1
+      }
+    }
   }
 
   isZero () {

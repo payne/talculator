@@ -39,3 +39,16 @@ test("getLastNumber should return the last number from the expression", (t) => {
 
   t.end()
 })
+
+// getLastValue tests 
+
+test("getLastValue should return the last value from the expression", (t) => {
+  expression.setValue("234 - ")
+  t.equal(expression.getLastValue(), "-")
+
+  expression.setValue("234 * 556")
+  t.equal(expression.getLastValue(), "556")
+
+  t.end()
+})
+
