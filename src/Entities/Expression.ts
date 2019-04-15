@@ -75,6 +75,12 @@ class Expression {
     }
     return
   }
+
+  isLastValueOperator() {
+    let lastVal = this.getLastValue()
+
+    return lastVal.match(/\D/) !== null
+  }
 }
 
 export default Expression

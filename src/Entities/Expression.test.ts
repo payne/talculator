@@ -65,3 +65,19 @@ test("getFirstToPenultimateValue should return everything but the last value fro
 
   t.end()
 })
+
+// isLastValueOperator tests 
+
+test("isLastValueOperator should return if the last value of the expression"
++ " is an operator", (t) => {
+  expression.setValue("234 + 33 -")
+  t.true(expression.isLastValueOperator())
+
+  expression.setValue("234 - 467")
+  t.false(expression.isLastValueOperator())
+
+  expression.setValue("0")
+  t.false(expression.isLastValueOperator())
+
+  t.end()
+})
