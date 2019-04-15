@@ -44,7 +44,18 @@ class Expression {
   }
 
   getFirstToPenultimateValue () {
-    return this.value.substr(0, this.getLength() - 1)
+    let value = this.value
+    let components = value.split("")
+    let l = components.length - 1
+
+    if(l === 0) return "0"    
+    /**
+     *  an operator is preceded and followed by a space
+     *  remove the spaces and return the valid expression
+     **/
+    if(components[l] === " ") l = l - 2
+
+    return value.substr(0, l)
   }
   
   getLastNumber () {

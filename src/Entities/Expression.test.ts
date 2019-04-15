@@ -52,3 +52,16 @@ test("getLastValue should return the last value from the expression", (t) => {
   t.end()
 })
 
+// getFirstToPenultimateValue tests 
+
+test("getFirstToPenultimateValue should return everything but the last value from the"+ 
+  " expression", (t) => {
+  expression.setValue("234")
+  t.equal(expression.getFirstToPenultimateValue(), "23")
+  
+  // a valid expression does not contain unneeded white space
+  expression.setValue("234 + ")
+  t.equal(expression.getFirstToPenultimateValue(), "234")
+
+  t.end()
+})
