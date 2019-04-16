@@ -12,6 +12,15 @@ test("isNumber should return whether the expression is a number or not", (t) => 
   expression.setValue("26 - 3")
   t.false(expression.isNumber(), "26 - 3 is not a number")
 
+  expression.setValue("0.2")
+  t.true(expression.isNumber(), "0.2 is a number")
+
+  expression.setValue(".2")
+  t.true(expression.isNumber(), ".2 is a number")
+
+  expression.setValue("0.2 + .34 - ")
+  t.false(expression.isNumber(), "0.2 + .34 - is not a number")
+
   expression.setValue(" + ")
   t.false(expression.isNumber(), "+ is not a number")
 

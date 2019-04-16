@@ -43,7 +43,14 @@ class Expression {
 
     if(!value) return false
 
-    return (value.match(/\D/) === null)
+    let components = value.split(" ")
+
+    /**
+     *  An expression that is a number has only one component 
+     *  and it is not NaN 
+     **/
+
+    return (components.length === 1 && !isNaN(parseFloat(components[0])))    
   }
 
   getFirstToPenultimateValue () {
