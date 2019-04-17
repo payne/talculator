@@ -1,4 +1,4 @@
-import IOutputPort from "../UseCases/UpdateExpression/OutputPort/IOutputPort"
+import IOutputPort from "../UseCases/ExpressionUpdater/OutputPort/IOutputPort"
 import IResponse from "./OutputPort/IResponse"
 
 class Presenter implements IOutputPort {

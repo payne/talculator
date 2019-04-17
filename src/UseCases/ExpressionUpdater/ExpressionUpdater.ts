@@ -2,23 +2,23 @@ import IInputPort from "./InputPort/IInputPort"
 import IOutputPort from "./OutputPort/IOutputPort"
 import Expression from "../../Entities/Expression"
 
-class UpdateExpression implements IInputPort {
+class ExpressionUpdater implements IInputPort {
   private expression: Expression
   private outputPort: IOutputPort
 
-  constructor(_expression: Expression, _outputPort: IOutputPort) {
+  constructor (_expression: Expression, _outputPort: IOutputPort) {
     this.expression = _expression
     this.outputPort = _outputPort
   }
 
-  updateExpression = (newVal: string): void => {
+  updateExpression (newVal: string): void {
     let newExpression = this.getNewExpression(newVal)
 
     this.expression.setValue(newExpression)
     this.outputPort.displayValue(newExpression)
   }
 
-  private getNewExpression(newVal: string): string {
+  private getNewExpression (newVal: string): string {
     let newExpression = ""
     let currentExpression = this.expression.getValue()
     let newNumber = parseInt(newVal)
@@ -39,4 +39,4 @@ class UpdateExpression implements IInputPort {
   }
 }
 
-export default UpdateExpression
+export default ExpressionUpdater

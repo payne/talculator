@@ -1,4 +1,4 @@
-import IInputPort from "../UseCases/UpdateExpression/InputPort/IInputPort"
+import IInputPort from "../UseCases/ExpressionUpdater/InputPort/IInputPort"
 import IRequest from "./InputPort/IRequest"
 
 class Controller implements IRequest {
