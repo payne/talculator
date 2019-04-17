@@ -40,6 +40,12 @@ test("getLastNumber should return the last number from the expression", (t) => {
   expression.setValue("22 + 33")
   t.equal(expression.getLastNumber(), "33")
 
+  expression.setValue("22 + .33")
+  t.equal(expression.getLastNumber(), ".33")
+
+  expression.setValue("0.03 - ")
+  t.equal(expression.getLastNumber(), "0.03")
+
   t.end()
 })
 
