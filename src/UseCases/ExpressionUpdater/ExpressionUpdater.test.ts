@@ -12,19 +12,21 @@ const expressionUpdater = new ExpressionUpdater(expression, {
 // isNumber tests
 
 test("isNumber should return whether the expression is a number or not", (t) => {  
-  t.true(expressionUpdater.isNumber("22"), "22 is a number")
+  let isNumber = expressionUpdater.isNumber.bind(expressionUpdater)
+
+  t.true(isNumber("22"), "22 is a number")
   
-  t.false(expressionUpdater.isNumber("26 - 3"), "26 - 3 is not a number")
+  t.false(isNumber("26 - 3"), "26 - 3 is not a number")
 
-  t.true(expressionUpdater.isNumber("0.2"), "0.2 is a number")
+  t.true(isNumber("0.2"), "0.2 is a number")
 
-  t.true(expressionUpdater.isNumber(".2"), ".2 is a number")
+  t.true(isNumber(".2"), ".2 is a number")
 
-  t.false(expressionUpdater.isNumber("0.2 + .34 - "), "0.2 + .34 - is not a number")
+  t.false(isNumber("0.2 + .34 - "), "0.2 + .34 - is not a number")
 
-  t.false(expressionUpdater.isNumber(" + "), "+ is not a number")
+  t.false(isNumber(" + "), "+ is not a number")
 
-  t.false(expressionUpdater.isNumber("_"))
+  t.false(isNumber("_"), "- is not a number")
   
   t.end()
 })
@@ -33,13 +35,15 @@ test("isNumber should return whether the expression is a number or not", (t) => 
 // getLastNumber tests
 
 test("getLastNumber should return the last number from the expression", (t) => {
-  t.equal(expressionUpdater.getLastNumber("22 + 33 - "), "33")
+  let getLastNumber = expressionUpdater.getLastNumber.bind(expressionUpdater)
 
-  t.equal(expressionUpdater.getLastNumber("22 + 33"), "33")
+  t.equal(getLastNumber("22 + 33 - "), "33")
 
-  t.equal(expressionUpdater.getLastNumber("22 + .33"), ".33")
+  t.equal(getLastNumber("22 + 33"), "33")
 
-  t.equal(expressionUpdater.getLastNumber("0.03 - "), "0.03")
+  t.equal(getLastNumber("22 + .33"), ".33")
+
+  t.equal(getLastNumber("0.03 - "), "0.03")
 
   t.end()
 })
@@ -47,9 +51,11 @@ test("getLastNumber should return the last number from the expression", (t) => {
 // getLastValue tests 
 
 test("getLastValue should return the last value from the expression", (t) => {
-  t.equal(expressionUpdater.getLastValue("234 - "), "-")
+  let getLastValue = expressionUpdater.getLastValue.bind(expressionUpdater)
 
-  t.equal(expressionUpdater.getLastValue("234 * 556"), "556")
+  t.equal(getLastValue("234 - "), "-")
+
+  t.equal(getLastValue("234 * 556"), "556")
 
   t.end()
 })
@@ -58,9 +64,12 @@ test("getLastValue should return the last value from the expression", (t) => {
 
 test("getFirstToPenultimateValue should return everything but the last value from the"+ 
   " expression", (t) => {
-  t.equal(expressionUpdater.getFirstToPenultimateValue("234"), "23")
+  let getFirstToPenultimateValue = 
+    expressionUpdater.getFirstToPenultimateValue.bind(expressionUpdater)
+
+  t.equal(getFirstToPenultimateValue("234"), "23")
   
-  t.equal(expressionUpdater.getFirstToPenultimateValue("234 + "), "234")
+  t.equal(getFirstToPenultimateValue("234 + "), "234")
 
   t.end()
 })
@@ -69,23 +78,29 @@ test("getFirstToPenultimateValue should return everything but the last value fro
 
 test("isLastValueOperator should return if the last value of the expression"
   + " is an operator", (t) => {
-  t.true(expressionUpdater.isLastValueOperator("234 + 33 -"))
+  let isLastValueOperator = 
+    expressionUpdater.isLastValueOperator.bind(expressionUpdater)
 
-  t.false(expressionUpdater.isLastValueOperator("234 - 467"))
+  t.true(isLastValueOperator("234 + 33 -"))
 
-  t.false(expressionUpdater.isLastValueOperator("0"))
+  t.false(isLastValueOperator("234 - 467"))
+
+  t.false(isLastValueOperator("0"))
 
   t.end()
 })
 
 test("getNewExpression should update the expression correctly", (t) => {
-  t.equal(expressionUpdater.getNewExpression("22", "CE"),"2")
+  let getNewExpression = 
+    expressionUpdater.getNewExpression.bind(expressionUpdater)
+  
+  t.equal(getNewExpression("22", "CE"),"2")
 
-  t.equal(expressionUpdater.getNewExpression("220", "+"), "220 + ")
+  t.equal(getNewExpression("220", "+"), "220 + ")
 
-  t.equal(expressionUpdater.getNewExpression("220 + 33", "AC"),"0")
+  t.equal(getNewExpression("220 + 33", "AC"),"0")
 
-  t.equal(expressionUpdater.getNewExpression("0", "22"), "22")
+  t.equal(getNewExpression("0", "22"), "22")
 
   t.end()
 })
