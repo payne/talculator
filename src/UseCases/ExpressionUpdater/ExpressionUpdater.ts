@@ -19,7 +19,7 @@ class ExpressionUpdater implements IInputPort {
     this.outputPort.displayValue(newExpression)
   }
 
-  private getNewExpression (currentExpression:string, newVal: string): string {
+  getNewExpression (currentExpression:string, newVal: string): string {
     let newExpression = ""
     let newNumber = parseInt(newVal)
 
