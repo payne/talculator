@@ -76,7 +76,7 @@ test("getSubExpressionWithoutLastTerm should return everything but the last valu
 
 // isLastTermOperator tests 
 
-test("isLastTermOperator should return if the last value of the expression"
+test("isLastTermOperator should return if the last term of the expression"
   + " is an operator", (t) => {
   let isLastTermOperator = 
     expressionUpdater.isLastTermOperator.bind(expressionUpdater)
@@ -84,6 +84,8 @@ test("isLastTermOperator should return if the last value of the expression"
   t.true(isLastTermOperator("234 + 33 -"), "234 + 33 - ends with an operator")
 
   t.false(isLastTermOperator("234 - 467"), "234 - 467 does not end with an operator")
+
+  t.false(isLastTermOperator("234."), "234. does not end with an operator")
 
   t.false(isLastTermOperator("0"))
 

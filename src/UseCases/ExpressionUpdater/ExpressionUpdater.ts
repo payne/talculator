@@ -110,7 +110,7 @@ class ExpressionUpdater implements IInputPort {
   isLastTermOperator(expressionVal: string) {
     let lastVal = this.getLastTerm(expressionVal)
 
-    return lastVal.match(/\D/) !== null
+    return lastVal.match(/\D/) !== null && !lastVal.includes(".")
   }
 }
 
