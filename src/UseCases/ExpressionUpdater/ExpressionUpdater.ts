@@ -28,7 +28,7 @@ class ExpressionUpdater implements IInputPort {
     } else if (newVal === "AC") {
       newExpression = "0"
     } else if (newVal === "CE") {
-      newExpression = this.getFirstToPenultimateValue(currentExpression)
+      newExpression = this.getSubExpressionWithoutLastTerm(currentExpression)
       if (!newExpression) newExpression = "0"
     } else if (newVal !== "." && !newNumber) {
       newExpression = `${currentExpression} ${newVal} `
@@ -77,7 +77,7 @@ class ExpressionUpdater implements IInputPort {
     return (components.length === 1 && !isNaN(parseFloat(components[0])))    
   }
 
-  getFirstToPenultimateValue (expressionVal: string) {
+  getSubExpressionWithoutLastTerm (expressionVal: string) {
     let value = expressionVal
     let components = value.split("")
     let l = components.length - 1

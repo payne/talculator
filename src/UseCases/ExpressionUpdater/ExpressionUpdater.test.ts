@@ -60,16 +60,16 @@ test("getLastTerm should return the last value from the expression", (t) => {
   t.end()
 })
 
-// getFirstToPenultimateValue tests 
+// getSubExpressionWithoutLastTerm tests 
 
-test("getFirstToPenultimateValue should return everything but the last value from the"+ 
+test("getSubExpressionWithoutLastTerm should return everything but the last value from the"+ 
   " expression", (t) => {
-  let getFirstToPenultimateValue = 
-    expressionUpdater.getFirstToPenultimateValue.bind(expressionUpdater)
+  let getSubExpressionWithoutLastTerm = 
+    expressionUpdater.getSubExpressionWithoutLastTerm.bind(expressionUpdater)
 
-  t.equal(getFirstToPenultimateValue("234"), "23")
+  t.equal(getSubExpressionWithoutLastTerm("234"), "23")
   
-  t.equal(getFirstToPenultimateValue("234 + "), "234")
+  t.equal(getSubExpressionWithoutLastTerm("234 + "), "234")
 
   t.end()
 })
