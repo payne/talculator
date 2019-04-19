@@ -48,14 +48,14 @@ test("getLastNumber should return the last number from the expression", (t) => {
   t.end()
 })
 
-// getLastValue tests 
+// getLastTerm tests 
 
-test("getLastValue should return the last value from the expression", (t) => {
-  let getLastValue = expressionUpdater.getLastValue.bind(expressionUpdater)
+test("getLastTerm should return the last value from the expression", (t) => {
+  let getLastTerm = expressionUpdater.getLastTerm.bind(expressionUpdater)
 
-  t.equal(getLastValue("234 - "), "-")
+  t.equal(getLastTerm("234 - "), "-")
 
-  t.equal(getLastValue("234 * 556"), "556")
+  t.equal(getLastTerm("234 * 556"), "556")
 
   t.end()
 })

@@ -42,11 +42,11 @@ class ExpressionUpdater implements IInputPort {
     return expressionVal.length
   }
 
-  getLastValue (expressionVal: string) {
+  getLastTerm (expressionVal: string) {
     let components = expressionVal.split(" ")
     let l = components.length - 1
 
-    // make sure that the last child is not an empty string
+    // make sure that the last child is not an empty string or a space
     while(l >= 0) {
     if (!components[l]) {
         l -= 1
@@ -108,7 +108,7 @@ class ExpressionUpdater implements IInputPort {
   }
 
   isLastValueOperator(expressionVal: string) {
-    let lastVal = this.getLastValue(expressionVal)
+    let lastVal = this.getLastTerm(expressionVal)
 
     return lastVal.match(/\D/) !== null
   }
