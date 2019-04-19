@@ -81,9 +81,9 @@ test("isLastValueOperator should return if the last value of the expression"
   let isLastValueOperator = 
     expressionUpdater.isLastValueOperator.bind(expressionUpdater)
 
-  t.true(isLastValueOperator("234 + 33 -"))
+  t.true(isLastValueOperator("234 + 33 -"), "234 + 33 - ends with an operator")
 
-  t.false(isLastValueOperator("234 - 467"))
+  t.false(isLastValueOperator("234 - 467"), "234 - 467 does not end with an operator")
 
   t.false(isLastValueOperator("0"))
 
