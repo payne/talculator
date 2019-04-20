@@ -1,5 +1,10 @@
+export type InputData = {
+  value: string,
+  type: string
+} 
+
 interface IInputPort {
-  updateExpression (newValue: string): void
+  updateExpression (inputData: InputData): void
 }
 
 export default IInputPort

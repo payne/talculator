@@ -1,4 +1,5 @@
 import IInputPort from "../UseCases/ExpressionUpdater/InputPort/IInputPort"
+import {InputData} from "../UseCases/ExpressionUpdater/InputPort/IInputPort"
 import IRequest from "./InputPort/IRequest"
 
 class Controller implements IRequest {
@@ -8,8 +9,8 @@ class Controller implements IRequest {
     this.inputPort = inputPort
   }
 
-  updateExpression (value: any) {
-    this.inputPort.updateExpression(value)
+  updateExpression (inputData: InputData) {
+    this.inputPort.updateExpression(inputData)
   }
 }
 
