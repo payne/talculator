@@ -91,18 +91,3 @@ test("isLastTermOperator should return if the last term of the expression"
 
   t.end()
 })
-
-test("getNewExpression should update the expression correctly", (t) => {
-  let getNewExpression = 
-    expressionUpdater.getNewExpression.bind(expressionUpdater)
-  
-  t.equal(getNewExpression("22", "CE"),"2")
-
-  t.equal(getNewExpression("220", "+"), "220 + ")
-
-  t.equal(getNewExpression("220 + 33", "AC"),"0")
-
-  t.equal(getNewExpression("0", "22"), "22")
-
-  t.end()
-})
