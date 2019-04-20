@@ -1,4 +1,5 @@
 import IInputPort from "./InputPort/IInputPort"
+import {InputData} from "./InputPort/IInputPort"
 import IOutputPort from "./OutputPort/IOutputPort"
 import Expression from "../../Entities/Expression"
 
@@ -11,30 +12,53 @@ class ExpressionUpdater implements IInputPort {
     this.outputPort = _outputPort
   }
 
-  updateExpression (newVal: string): void {
+  updateExpression (inputData: InputData): void {
     let currentExpression = this.expression.getValue()
-    let newExpression = this.getNewExpression(currentExpression, newVal)
+    let newExpression = this.getNewExpression(currentExpression, inputData)
 
     this.expression.setValue(newExpression)
     this.outputPort.displayValue(newExpression)
   }
 
-  getNewExpression (currentExpression:string, newVal: string): string {
+  getNewExpression (currentExpression:string, inputData: InputData): string {
     let newExpression = ""
-    let newNumber = parseInt(newVal)
+    let newVal = inputData.value
+    let type = inputData.type
 
-    if (this.isZero(currentExpression) && newNumber) {
-      newExpression = newVal
-    } else if (newVal === "AC") {
-      newExpression = "0"
-    } else if (newVal === "CE") {
+    if (type === "digit") {
+      if (this.isZero(currentExpression)) newExpression = newVal
+      else newExpression = currentExpression + newVal
+    } 
+    else if (type === "operator") {
+      if (!this.isLastTermOperator(currentExpression)) {
+        newExpression = `${currentExpression} ${newVal} `
+      } else {
+        newExpression = currentExpression
+      }
+    } 
+    else if (type === "clearEntry") {
       newExpression = this.getSubExpressionWithoutLastTerm(currentExpression)
-      if (!newExpression) newExpression = "0"
-    } else if (newVal !== "." && !newNumber) {
-      newExpression = `${currentExpression} ${newVal} `
-    } else {
-      newExpression = currentExpression + newVal
+    } 
+    else if (type === "decimal") {
+      let lastTerm = this.getLastTerm(currentExpression)
+      if(!lastTerm.includes(".")) {
+          newExpression = currentExpression + newVal
+        } else {
+          newExpression = currentExpression
+        }
+    } 
+    else if (type === "equals") {
+      let result:number = eval(currentExpression)
+      console.log(result)
+      newExpression = result.toString()
     }
+    else if (type === "answerClear") {
+      newExpression = "0"
+    } 
+    else {
+      newExpression = currentExpression
+    }
+
     return newExpression
   }
 
