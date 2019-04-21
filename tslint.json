@@ -1,0 +1,7 @@
+{
+    "defaultSeverity": "error",
+    "extends": ["@intellihr/standard-tslint"],
+    "jsRules": {},
+    "rules": {},
+    "rulesDirectory": []
+}
