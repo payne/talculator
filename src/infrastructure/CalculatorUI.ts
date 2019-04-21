@@ -16,7 +16,7 @@ class CalculatorUI {
   }
 
   showGui = () => {
-    let win = this.createWindow(this.calculatorTitle, this.calculatorWidth, 
+    let win = this.createNonResizableWindow(this.calculatorTitle, this.calculatorWidth, 
       this.calculatorHeight)
     let mainContainer = this.createContainer({})
     let displayContainer = this.createContainer({})
@@ -36,7 +36,7 @@ class CalculatorUI {
     this.startMessageLoop()
   }
 
-  private createWindow (title: string, width: number, height: number) {
+  private createNonResizableWindow (title: string, width: number, height: number) {
     let win = Window.create({})
     win.setContentSize({ width: width, height: height })
     win.setTitle(title)
