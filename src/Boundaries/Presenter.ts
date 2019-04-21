@@ -9,7 +9,7 @@ class Presenter implements IOutputPort {
   }
 
   displayValue (value: string): void {
-    this.response.presentValue(value)
+    this.response.displayValue(value)
   }
 }
 

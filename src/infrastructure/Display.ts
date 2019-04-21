@@ -12,7 +12,7 @@ class Display implements IResponse {
     return this.label
   }
 
-  presentValue(newVal: string) {
+  displayValue(newVal: string) {
     this.label.setText(newVal)
   }
 }

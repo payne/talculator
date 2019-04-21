@@ -1,5 +1,5 @@
 interface IResponse {
-  presentValue (val: string): void
+  displayValue (val: string): void
 }
 
 export default IResponse
