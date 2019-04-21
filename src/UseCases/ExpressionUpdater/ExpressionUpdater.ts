@@ -49,7 +49,6 @@ class ExpressionUpdater implements IInputPort {
     } 
     else if (type === "equals") {
       let result:number = eval(currentExpression)
-      console.log(result)
       newExpression = result.toString()
     }
     else if (type === "answerClear") {

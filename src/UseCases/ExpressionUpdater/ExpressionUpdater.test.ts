@@ -4,9 +4,7 @@ import ExpressionUpdater from "./ExpressionUpdater"
 
 const expression = new Expression()
 const expressionUpdater = new ExpressionUpdater(expression, {
-  displayValue (value: string) {
-    console.log(value)
-  }
+  displayValue (value: string) {}
 })
 
 // isNumber tests
