@@ -6,6 +6,9 @@ import Display from "./Display"
 class CalculatorUI {
   private keypad: Keypad
   private display: Display
+  private calculatorWidth: number = 400
+  private calculatorHeight: number = 350
+  private calculatorTitle: string = "Simple Calculator"
 
   constructor(keypad: Keypad, display: Display) {
     this.keypad = keypad 
@@ -13,7 +16,8 @@ class CalculatorUI {
   }
 
   showGui = () => {
-    let win = this.createWindow()
+    let win = this.createWindow(this.calculatorTitle, this.calculatorWidth, 
+      this.calculatorHeight)
     let mainContainer = this.createContainer({})
     let displayContainer = this.createContainer({})
     let keypadContainer = this.createContainer({})
@@ -28,17 +32,21 @@ class CalculatorUI {
     this.addChildViewsToContainer(keypadContainer, this.keypad.getKeypadView())    
     this.addChildViewsToContainer(mainContainer, [displayContainer, keypadContainer])
     win.setContentView(mainContainer)
+    this.activateWindow(win)
     this.startMessageLoop()
   }
 
-  private createWindow () {
+  private createWindow (title: string, width: number, height: number) {
     let win = Window.create({})
-    win.setContentSize({ width: 400, height: 350 })
-    win.setTitle("Simple Calculator")
+    win.setContentSize({ width: width, height: height })
+    win.setTitle(title)
     win.setResizable(false)
     win.onClose = () => MessageLoop.quit()
-    win.activate()
     return win
+  }
+
+  private activateWindow(win: Window) {
+    win.activate()
   }
 
   private startMessageLoop () {
@@ -46,9 +54,9 @@ class CalculatorUI {
     process.exit(0)
   }
 
-  private createContainer (style: any) {
+  private createContainer (styles: any) {
     let container = Container.create()
-    container.setStyle(style)
+    container.setStyle(styles)
     return container
   }
 
