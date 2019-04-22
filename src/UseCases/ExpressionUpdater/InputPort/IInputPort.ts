@@ -1,7 +1,7 @@
-export type InputData = {
+export interface InputData {
   value: string,
   type: string
-} 
+}
 
 interface IInputPort {
   updateExpression (inputData: InputData): void

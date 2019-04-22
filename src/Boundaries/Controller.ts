@@ -1,6 +1,6 @@
-import IInputPort from "../UseCases/ExpressionUpdater/InputPort/IInputPort"
-import {InputData} from "../UseCases/ExpressionUpdater/InputPort/IInputPort"
-import IRequest from "./InputPort/IRequest"
+import IInputPort from '../UseCases/ExpressionUpdater/InputPort/IInputPort'
+import {InputData} from '../UseCases/ExpressionUpdater/InputPort/IInputPort'
+import IRequest from './InputPort/IRequest'
 
 class Controller implements IRequest {
   private inputPort: IInputPort
@@ -9,7 +9,7 @@ class Controller implements IRequest {
     this.inputPort = inputPort
   }
 
-  updateExpression (inputData: InputData) {
+  public updateExpression (inputData: InputData) {
     this.inputPort.updateExpression(inputData)
   }
 }

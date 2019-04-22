@@ -1,10 +1,10 @@
-import Expression from "./Entities/Expression"
-import ExpressionUpdater from "./UseCases/ExpressionUpdater/ExpressionUpdater"
-import Presenter from "./Boundaries/Presenter"
-import Gui from "./infrastructure/CalculatorUI"
-import Controller from "./Boundaries/Controller"
-import Keypad from "./infrastructure/Keypad"
-import Display from "./infrastructure/Display"
+import Gui from './infrastructure/CalculatorUI'
+import Display from './infrastructure/Display'
+import Keypad from './infrastructure/Keypad'
+import Controller from './Boundaries/Controller'
+import Presenter from './Boundaries/Presenter'
+import Expression from './Entities/Expression'
+import ExpressionUpdater from './UseCases/ExpressionUpdater/ExpressionUpdater'
 
 const display = new Display()
 const expression = new Expression()

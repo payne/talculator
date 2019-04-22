@@ -1,14 +1,14 @@
-import IOutputPort from "../UseCases/ExpressionUpdater/OutputPort/IOutputPort"
-import IResponse from "./OutputPort/IResponse"
+import IOutputPort from '../UseCases/ExpressionUpdater/OutputPort/IOutputPort'
+import IResponse from './OutputPort/IResponse'
 
 class Presenter implements IOutputPort {
   private response: IResponse
 
-  constructor (_response: IResponse) {
-    this.response = _response
+  constructor (response: IResponse) {
+    this.response = response
   }
 
-  displayValue (value: string): void {
+  public displayValue (value: string): void {
     this.response.displayValue(value)
   }
 }

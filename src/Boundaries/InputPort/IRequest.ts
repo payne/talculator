@@ -1,5 +1,5 @@
 interface IRequest {
-  updateExpression (value: any) : void
+  updateExpression (value: any): void
 }
 
 export default IRequest
