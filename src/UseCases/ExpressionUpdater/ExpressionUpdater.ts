@@ -1,13 +1,13 @@
 import Expression from '../../Entities/Expression'
 import IExpressionUpdaterInputPort from './InputPort/IExpressionUpdaterInputPort'
 import {IExpressionUpdaterInputData} from './InputPort/IExpressionUpdaterInputPort'
-import IOutputPort from './OutputPort/IOutputPort'
+import IExpressionUpdaterOutputPort from './OutputPort/IExpressionUpdaterOutputPort'
 
 class ExpressionUpdater implements IExpressionUpdaterInputPort {
   private expression: Expression
-  private outputPort: IOutputPort
+  private outputPort: IExpressionUpdaterOutputPort
 
-  constructor (expression: Expression, outputPort: IOutputPort) {
+  constructor (expression: Expression, outputPort: IExpressionUpdaterOutputPort) {
     this.expression = expression
     this.outputPort = outputPort
   }

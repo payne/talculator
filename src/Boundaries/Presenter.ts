@@ -1,7 +1,7 @@
-import IOutputPort from '../UseCases/ExpressionUpdater/OutputPort/IOutputPort'
+import IExpressionUpdaterOutputPort from '../UseCases/ExpressionUpdater/OutputPort/IExpressionUpdaterOutputPort'
 import IResponse from './OutputPort/IResponse'
 
-class Presenter implements IOutputPort {
+class Presenter implements IExpressionUpdaterOutputPort {
   private response: IResponse
 
   constructor (response: IResponse) {
