@@ -1,9 +1,9 @@
 import Expression from '../../Entities/Expression'
-import IInputPort from './InputPort/IInputPort'
-import {IInputData} from './InputPort/IInputPort'
+import IExpressionUpdaterInputPort from './InputPort/IExpressionUpdaterInputPort'
+import {IExpressionUpdaterInputData} from './InputPort/IExpressionUpdaterInputPort'
 import IOutputPort from './OutputPort/IOutputPort'
 
-class ExpressionUpdater implements IInputPort {
+class ExpressionUpdater implements IExpressionUpdaterInputPort {
   private expression: Expression
   private outputPort: IOutputPort
 
@@ -12,7 +12,7 @@ class ExpressionUpdater implements IInputPort {
     this.outputPort = outputPort
   }
 
-  public updateExpression (inputData: IInputData): void {
+  public updateExpression (inputData: IExpressionUpdaterInputData): void {
     const currentExpression = this.expression.getValue()
     const newExpression = this.getNewExpression(currentExpression, inputData)
 
@@ -20,7 +20,7 @@ class ExpressionUpdater implements IInputPort {
     this.outputPort.displayValue(newExpression)
   }
 
-  public getNewExpression (currentExpression: string, inputData: IInputData): string {
+  public getNewExpression (currentExpression: string, inputData: IExpressionUpdaterInputData): string {
     let newExpression = ''
     const newVal = inputData.value
     const type = inputData.type
