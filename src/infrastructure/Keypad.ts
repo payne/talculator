@@ -1,11 +1,11 @@
 import {Button, View} from 'gui'
 
-import Controller from '../Boundaries/Controller'
+import ExpressionUpdaterController from '../Boundaries/ExpressionUpdater/ExpressionUpdaterController'
 
 class Keypad {
-  private controller: Controller
+  private controller: ExpressionUpdaterController
 
-  constructor (controller: Controller) {
+  constructor (controller: ExpressionUpdaterController) {
     this.controller = controller
   }
 

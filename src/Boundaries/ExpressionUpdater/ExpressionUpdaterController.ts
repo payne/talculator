@@ -1,6 +1,6 @@
-import IExpressionUpdaterInputPort from '../UseCases/ExpressionUpdater/InputPort/IExpressionUpdaterInputPort'
-import {IExpressionUpdaterInputData} from '../UseCases/ExpressionUpdater/InputPort/IExpressionUpdaterInputPort'
-import IRequest from './InputPort/IRequest'
+import IExpressionUpdaterInputPort from '../../UseCases/ExpressionUpdater/InputPort/IExpressionUpdaterInputPort'
+import {IExpressionUpdaterInputData} from '../../UseCases/ExpressionUpdater/InputPort/IExpressionUpdaterInputPort'
+import IRequest from './InputPort/IExpressionUpdaterRequest'
 
 class Controller implements IRequest {
   private inputPort: IExpressionUpdaterInputPort
