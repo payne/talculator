@@ -1,13 +1,13 @@
 import Expression from '../../Entities/Expression'
+import IUseCaseOutputPort from '../UseCaseOutputPort/OutputPort'
 import IExpressionUpdaterInputPort from './InputPort/IExpressionUpdaterInputPort'
 import {IExpressionUpdaterInputData} from './InputPort/IExpressionUpdaterInputPort'
-import IExpressionUpdaterOutputPort from './OutputPort/IExpressionUpdaterOutputPort'
 
 class ExpressionUpdater implements IExpressionUpdaterInputPort {
   private expression: Expression
-  private outputPort: IExpressionUpdaterOutputPort
+  private outputPort: IUseCaseOutputPort
 
-  constructor (expression: Expression, outputPort: IExpressionUpdaterOutputPort) {
+  constructor (expression: Expression, outputPort: IUseCaseOutputPort) {
     this.expression = expression
     this.outputPort = outputPort
   }
@@ -46,10 +46,6 @@ class ExpressionUpdater implements IExpressionUpdaterInputPort {
         } else {
           newExpression = currentExpression
         }
-    } else if (type === 'equals') {
-      // tslint:disable-next-line: no-eval
-      const result: number = eval(currentExpression)
-      newExpression = result.toString()
     } else if (type === 'answerClear') {
       newExpression = '0'
     } else {
