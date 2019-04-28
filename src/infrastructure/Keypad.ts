@@ -1,12 +1,15 @@
 import {Button, View} from 'gui'
 
+import CalculatorController from '../Boundaries/Calculator/CalculatorController'
 import ExpressionUpdaterController from '../Boundaries/ExpressionUpdater/ExpressionUpdaterController'
 
 class Keypad {
-  private controller: ExpressionUpdaterController
+  private expressionUpdaterController: ExpressionUpdaterController
+  private calculatorController: CalculatorController
 
-  constructor (controller: ExpressionUpdaterController) {
-    this.controller = controller
+  constructor (expressionUpdaterController: ExpressionUpdaterController, calculatorController: CalculatorController) {
+    this.expressionUpdaterController = expressionUpdaterController
+    this.calculatorController = calculatorController
   }
 
   public getKeypadView (): View[] {
@@ -22,16 +25,19 @@ class Keypad {
       margin: '10px'
     }
     let allKeys: View[] = []
-    const callback = this.controller.updateExpression.bind(this.controller)
-
-    const digitKeys = this.createKeyRow(digits, 'digit', callback , keyStyles)
-    const operatorKeys = this.createKeyRow(operators, 'operator', callback, keyStyles)
-    const equalsKey = this.createKeyRow([equals], 'equals', callback, keyStyles)
-    const decimalPointKey = this.createKeyRow([decimalPoint],'decimal' ,callback,
+    const expressionUpdaterCallback =
+      this.expressionUpdaterController.updateExpression.bind(this.expressionUpdaterController)
+    const calculatorCallback =
+      this.calculatorController.evaluateExpression.bind(this.calculatorController)
+    const digitKeys = this.createKeyRow(digits, 'digit', expressionUpdaterCallback , keyStyles)
+    const operatorKeys = this.createKeyRow(operators, 'operator', expressionUpdaterCallback, keyStyles)
+    const equalsKey = this.createKeyRow([equals], 'equals',
+      calculatorCallback, keyStyles)
+    const decimalPointKey = this.createKeyRow([decimalPoint],'decimal' ,expressionUpdaterCallback,
       keyStyles)
-    const answerClearKey = this.createKeyRow([answerClear], 'answerClear', callback,
+    const answerClearKey = this.createKeyRow([answerClear], 'answerClear', expressionUpdaterCallback,
       keyStyles)
-    const clearEntryKey = this.createKeyRow([clearEntry], 'clearEntry', callback,
+    const clearEntryKey = this.createKeyRow([clearEntry], 'clearEntry', expressionUpdaterCallback,
       keyStyles)
 
     allKeys = allKeys.concat(digitKeys, operatorKeys, equalsKey, decimalPointKey,
