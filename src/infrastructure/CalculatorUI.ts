@@ -17,27 +17,47 @@ class CalculatorUI {
   }
 
   public showGui = () => {
-    const win = this.createNonResizableWindow(this.calculatorTitle, this.calculatorWidth,
-      this.calculatorHeight)
+    const win = this.createNonResizableWindow(this.calculatorTitle,
+      this.calculatorWidth, this.calculatorHeight)
+
+    const displayContainerStyles = {
+      backgroundColor: '#fff',
+      margin: '10px',
+      paddingRight: '15px',
+      height: '50px',
+      display: 'flex',
+      boxSizing: 'border-box',
+      flexDirection: 'row-reverse'
+    }
+
+    const keypadContainerStyles = {
+      width: '400px',
+      display: 'flex',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'center'
+    }
+
     const mainContainer = this.createContainer({})
-    const displayContainer = this.createContainer({})
-    const keypadContainer = this.createContainer({})
+    const displayContainer = this.createContainer(displayContainerStyles)
+    const keypadContainer = this.createContainer(keypadContainerStyles)
 
-    displayContainer.setStyle({backgroundColor: '#fff', margin: '10px',
-    paddingRight: '15px', height: '50px', display: 'flex', boxSizing: 'border-box',
-    flexDirection: 'row-reverse'})
-    keypadContainer.setStyle({ width: '400px', display: 'flex', flexDirection: 'row'
-    ,flexWrap: 'wrap', justifyContent: 'center'})
+    this.addChildViewsToContainer(displayContainer,
+      this.display.getDisplayView())
 
-    this.addChildViewsToContainer(displayContainer, this.display.getDisplayView())
-    this.addChildViewsToContainer(keypadContainer, this.keypad.getKeypadView())
-    this.addChildViewsToContainer(mainContainer, [displayContainer, keypadContainer])
+    this.addChildViewsToContainer(keypadContainer,
+      this.keypad.getKeypadView())
+
+    this.addChildViewsToContainer(mainContainer,
+      [displayContainer, keypadContainer])
+
     win.setContentView(mainContainer)
     this.activateWindow(win)
     this.startMessageLoop()
   }
 
-  private createNonResizableWindow (title: string, width: number, height: number) {
+  private createNonResizableWindow (title: string, width: number,
+    height: number) {
     const win = Window.create({})
     win.setContentSize({ width, height })
     win.setTitle(title)
@@ -61,7 +81,8 @@ class CalculatorUI {
     return container
   }
 
-  private addChildViewsToContainer (container: Container, childViews: View[] | View) {
+  private addChildViewsToContainer (container: Container,
+    childViews: View[] | View) {
     if (isArray(childViews)) {
       childViews.map((child) => {
         container.addChildView(child)

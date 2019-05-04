@@ -7,7 +7,8 @@ class Keypad {
   private expressionUpdaterController: ExpressionUpdaterController
   private calculatorController: CalculatorController
 
-  constructor (expressionUpdaterController: ExpressionUpdaterController, calculatorController: CalculatorController) {
+  constructor (expressionUpdaterController: ExpressionUpdaterController,
+    calculatorController: CalculatorController) {
     this.expressionUpdaterController = expressionUpdaterController
     this.calculatorController = calculatorController
   }
@@ -24,29 +25,43 @@ class Keypad {
       width: '20%',
       margin: '10px'
     }
-    let allKeys: View[] = []
-    const expressionUpdaterCallback =
-      this.expressionUpdaterController.updateExpression.bind(this.expressionUpdaterController)
-    const calculatorCallback =
-      this.calculatorController.evaluateExpression.bind(this.calculatorController)
-    const digitKeys = this.createKeyRow(digits, 'digit', expressionUpdaterCallback , keyStyles)
-    const operatorKeys = this.createKeyRow(operators, 'operator', expressionUpdaterCallback, keyStyles)
-    const equalsKey = this.createKeyRow([equals], 'equals',
-      calculatorCallback, keyStyles)
-    const decimalPointKey = this.createKeyRow([decimalPoint],'decimal' ,expressionUpdaterCallback,
-      keyStyles)
-    const answerClearKey = this.createKeyRow([answerClear], 'answerClear', expressionUpdaterCallback,
-      keyStyles)
-    const clearEntryKey = this.createKeyRow([clearEntry], 'clearEntry', expressionUpdaterCallback,
-      keyStyles)
 
-    allKeys = allKeys.concat(digitKeys, operatorKeys, equalsKey, decimalPointKey,
-      answerClearKey, clearEntryKey)
+    let allKeys: View[] = []
+
+    const expressionUpdaterCallback =
+      this.expressionUpdaterController.updateExpression.bind(
+        this.expressionUpdaterController)
+
+    const calculatorCallback =
+      this.calculatorController.evaluateExpression.bind(
+        this.calculatorController)
+
+    const digitKeys = this.createKeyArray(digits, 'digit',
+      expressionUpdaterCallback, keyStyles)
+
+    const operatorKeys = this.createKeyArray(operators, 'operator',
+    expressionUpdaterCallback, keyStyles)
+
+    const equalsKey = this.createKeyArray([equals], 'equals',
+      calculatorCallback, keyStyles)
+
+    const decimalPointKey = this.createKeyArray([decimalPoint],'decimal' ,
+      expressionUpdaterCallback, keyStyles)
+
+    const answerClearKey = this.createKeyArray([answerClear], 'answerClear',
+     expressionUpdaterCallback, keyStyles)
+
+    const clearEntryKey = this.createKeyArray([clearEntry], 'clearEntry',
+      expressionUpdaterCallback, keyStyles)
+
+    allKeys = allKeys.concat(digitKeys, operatorKeys, equalsKey,
+      decimalPointKey, answerClearKey, clearEntryKey)
 
     return allKeys
   }
 
-  public createKeyRow (keyValues: string[], keyType: string, callback: any, style: any) {
+  public createKeyArray (keyValues: string[], keyType: string, callback: any,
+    styles: any) {
     const keys: View[] = []
 
     keyValues.map((val) => {
@@ -55,7 +70,7 @@ class Keypad {
         value: val,
         type: keyType
       })
-      key.setStyle(style)
+      key.setStyle(styles)
       keys.push(key)
     })
 
