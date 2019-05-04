@@ -20,7 +20,8 @@ class ExpressionUpdater implements IExpressionUpdaterInputPort {
     this.outputPort.displayValue(newExpression)
   }
 
-  public getNewExpression (currentExpression: string, inputData: IExpressionUpdaterInputData): string {
+  public getNewExpression (currentExpression: string,
+    inputData: IExpressionUpdaterInputData): string {
     let newExpression = ''
     const newVal = inputData.value
     const type = inputData.type
