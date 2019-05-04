@@ -12,7 +12,8 @@ const expressionUpdater = new ExpressionUpdater(expression, {
 
 // isNumber tests
 
-test('isNumber should return whether the expression is a number or not', (t) => {
+test('isNumber should return whether the expression is a number or not',
+  (t) => {
   const isNumber = expressionUpdater.isNumber.bind(expressionUpdater)
 
   t.true(isNumber('22'), '22 is a number')
@@ -62,8 +63,8 @@ test('getLastTerm should return the last value from the expression', (t) => {
 
 // getSubExpressionWithoutLastTerm tests
 
-test('getSubExpressionWithoutLastTerm should return everything but the last value from the' +
-  ' expression', (t) => {
+test('getSubExpressionWithoutLastTerm should return everything but the \
+  last value from the expression', (t) => {
   const getSubExpressionWithoutLastTerm =
     expressionUpdater.getSubExpressionWithoutLastTerm.bind(expressionUpdater)
 
@@ -83,7 +84,8 @@ test('isLastTermOperator should return if the last term of the expression'
 
   t.true(isLastTermOperator('234 + 33 -'), '234 + 33 - ends with an operator')
 
-  t.false(isLastTermOperator('234 - 467'), '234 - 467 does not end with an operator')
+  t.false(isLastTermOperator('234 - 467'),
+    '234 - 467 does not end with an operator')
 
   t.false(isLastTermOperator('234.'), '234. does not end with an operator')
 
