@@ -1,7 +1,6 @@
 import Expression from '../../Entities/Expression'
 import IUseCaseOutputPort from '../UseCaseOutputPort/OutputPort'
-import IExpressionUpdaterInputPort from './InputPort/IExpressionUpdaterInputPort'
-import {IExpressionUpdaterInputData} from './InputPort/IExpressionUpdaterInputPort'
+import IExpressionUpdaterInputPort, {IExpressionUpdaterRequestModel} from './InputPort/IExpressionUpdaterInputPort'
 
 class ExpressionUpdater implements IExpressionUpdaterInputPort {
   private expression: Expression
@@ -12,7 +11,7 @@ class ExpressionUpdater implements IExpressionUpdaterInputPort {
     this.outputPort = outputPort
   }
 
-  public updateExpression (inputData: IExpressionUpdaterInputData): void {
+  public updateExpression (inputData: IExpressionUpdaterRequestModel): void {
     const currentExpression = this.expression.getValue()
     const newExpression = this.getNewExpression(currentExpression, inputData)
 
@@ -21,33 +20,33 @@ class ExpressionUpdater implements IExpressionUpdaterInputPort {
   }
 
   public getNewExpression (currentExpression: string,
-    inputData: IExpressionUpdaterInputData): string {
+    inputData: IExpressionUpdaterRequestModel): string {
     let newExpression = ''
     const newVal = inputData.value
-    const type = inputData.type
+    const newValType = inputData.valueType
 
-    if (type === 'digit') {
+    if (newValType === 'digit') {
       if (this.isZero(currentExpression)) {
         newExpression = newVal
       } else {
         newExpression = currentExpression + newVal
       }
-    } else if (type === 'operator') {
+    } else if (newValType === 'operator') {
         if (!this.isLastTermOperator(currentExpression)) {
           newExpression = `${currentExpression} ${newVal} `
         } else {
           newExpression = currentExpression
         }
-    } else if (type === 'clearEntry') {
+    } else if (newValType === 'clearLastValue') {
       newExpression = this.getSubExpressionWithoutLastTerm(currentExpression)
-    } else if (type === 'decimal') {
+    } else if (newValType === 'decimal') {
       const lastTerm = this.getLastTerm(currentExpression)
       if (!lastTerm.includes('.')) {
           newExpression = currentExpression + newVal
         } else {
           newExpression = currentExpression
         }
-    } else if (type === 'answerClear') {
+    } else if (newValType === 'clearExpression') {
       newExpression = '0'
     } else {
       newExpression = currentExpression
