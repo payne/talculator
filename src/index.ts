@@ -1,7 +1,7 @@
 // infrastructure layer
-import Gui from './infrastructure/CalculatorUI'
-import Display from './infrastructure/Display'
-import Keypad from './infrastructure/Keypad'
+import Gui from './Infrastructure/CalculatorUI'
+import Display from './Infrastructure/Display'
+import Keypad from './Infrastructure/Keypad'
 
 // boundary layer
 import CalculatorController from './Boundaries/Calculator/CalculatorController'
@@ -20,7 +20,8 @@ const display = new Display()
 const presenter  = new Presenter(display)
 const expressionUpdater = new ExpressionUpdater(expression, presenter)
 const calculator = new Calculator(expression, presenter)
-const expressionUpdaterController = new ExpressionUpdaterController(expressionUpdater)
+const expressionUpdaterController =
+  new ExpressionUpdaterController(expressionUpdater)
 const calculatorController = new CalculatorController(calculator)
 const keypad = new Keypad(expressionUpdaterController, calculatorController)
 
