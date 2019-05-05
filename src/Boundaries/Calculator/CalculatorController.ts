@@ -1,5 +1,5 @@
 import ICalculatorInputPort from '../../UseCases/Calculator/InputPort/ICalculatorInputPort'
-import ICalculatorRequest from './InputPort/ICalculatorRequest'
+import ICalculatorRequest, {ICalculatorDTO} from './InputPort/ICalculatorRequest'
 
 class CalculatorController implements ICalculatorRequest {
   private inputPort: ICalculatorInputPort
