@@ -1,7 +1,9 @@
 import {Button, View} from 'gui'
 
 import CalculatorController from '../Boundaries/Calculator/CalculatorController'
+import { ICalculatorDTO } from '../Boundaries/Calculator/InputPort/ICalculatorRequest'
 import ExpressionUpdaterController from '../Boundaries/ExpressionUpdater/ExpressionUpdaterController'
+import {IExpressionUpdaterDTO} from '../Boundaries/ExpressionUpdater/InputPort/IExpressionUpdaterRequest'
 
 class Keypad {
   private expressionUpdaterController: ExpressionUpdaterController
@@ -18,8 +20,8 @@ class Keypad {
     const operators = ['+', '-', '/', '*']
     const equals = '='
     const decimalPoint = '.'
-    const answerClear = 'AC'
-    const clearEntry = 'CE'
+    const expressionClear = 'EC'
+    const clearLastValue = 'CLV'
 
     const keyStyles = {
       width: '20%',
@@ -48,27 +50,28 @@ class Keypad {
     const decimalPointKey = this.createKeyArray([decimalPoint],'decimal' ,
       expressionUpdaterCallback, keyStyles)
 
-    const answerClearKey = this.createKeyArray([answerClear], 'answerClear',
-     expressionUpdaterCallback, keyStyles)
+    const expressionClearKey = this.createKeyArray([expressionClear],
+      'clearExpression', expressionUpdaterCallback, keyStyles)
 
-    const clearEntryKey = this.createKeyArray([clearEntry], 'clearEntry',
-      expressionUpdaterCallback, keyStyles)
+    const clearLastValueKey = this.createKeyArray([clearLastValue],
+      'clearLastValue', expressionUpdaterCallback, keyStyles)
 
     allKeys = allKeys.concat(digitKeys, operatorKeys, equalsKey,
-      decimalPointKey, answerClearKey, clearEntryKey)
+      decimalPointKey, expressionClearKey, clearLastValueKey)
 
     return allKeys
   }
 
-  public createKeyArray (keyValues: string[], keyType: string, callback: any,
-    styles: any) {
+  public createKeyArray (keyValues: string[],
+    keyType: IExpressionUpdaterDTO['valueType'] | ICalculatorDTO['type'],
+    callback: any, styles: any) {
     const keys: View[] = []
 
     keyValues.map((val) => {
       const key = Button.create(val)
       key.onClick = () => callback({
         value: val,
-        type: keyType
+        valueType: keyType
       })
       key.setStyle(styles)
       keys.push(key)
