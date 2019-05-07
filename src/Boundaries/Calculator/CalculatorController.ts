@@ -2,11 +2,7 @@ import ICalculatorInputPort from '../../UseCases/Calculator/InputPort/ICalculato
 import ICalculatorRequest, {ICalculatorDTO} from './InputPort/ICalculatorRequest'
 
 class CalculatorController implements ICalculatorRequest {
-  private inputPort: ICalculatorInputPort
-
-  constructor (inputPort: ICalculatorInputPort) {
-    this.inputPort = inputPort
-  }
+  constructor (private inputPort: ICalculatorInputPort) {}
 
   public evaluateExpression () {
     this.inputPort.evaluateExpression()

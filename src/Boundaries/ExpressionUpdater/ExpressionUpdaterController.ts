@@ -4,11 +4,7 @@ import IRequest from './InputPort/IExpressionUpdaterRequest'
 import {IExpressionUpdaterDTO} from './InputPort/IExpressionUpdaterRequest'
 
 class Controller implements IRequest {
-  private inputPort: IExpressionUpdaterInputPort
-
-  constructor (inputPort: IExpressionUpdaterInputPort) {
-    this.inputPort = inputPort
-  }
+  constructor (private inputPort: IExpressionUpdaterInputPort) {}
 
   public updateExpression (inputData: IExpressionUpdaterDTO) {
     this.inputPort.updateExpression(inputData as IExpressionUpdaterRequestModel)

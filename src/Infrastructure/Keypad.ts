@@ -6,14 +6,8 @@ import ExpressionUpdaterController from '../Boundaries/ExpressionUpdater/Express
 import {IExpressionUpdaterDTO} from '../Boundaries/ExpressionUpdater/InputPort/IExpressionUpdaterRequest'
 
 class Keypad {
-  private expressionUpdaterController: ExpressionUpdaterController
-  private calculatorController: CalculatorController
-
-  constructor (expressionUpdaterController: ExpressionUpdaterController,
-    calculatorController: CalculatorController) {
-    this.expressionUpdaterController = expressionUpdaterController
-    this.calculatorController = calculatorController
-  }
+  constructor (private expressionUpdaterController: ExpressionUpdaterController,
+    private calculatorController: CalculatorController) {}
 
   public getKeypadView (): View[] {
     const digits = ['0','1','2','3','4','5','6','7','8','9']

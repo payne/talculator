@@ -5,16 +5,11 @@ import Display from './Display'
 import Keypad from './Keypad'
 
 class CalculatorUI {
-  private keypad: Keypad
-  private display: Display
   private calculatorWidth: number = 400
   private calculatorHeight: number = 350
   private calculatorTitle: string = 'Simple Calculator'
 
-  constructor (keypad: Keypad, display: Display) {
-    this.keypad = keypad
-    this.display = display
-  }
+  constructor (private keypad: Keypad, private display: Display) {}
 
   public showGui = () => {
     const win = this.createNonResizableWindow(this.calculatorTitle,

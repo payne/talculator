@@ -3,13 +3,8 @@ import IUseCaseOutputPort from '../UseCaseOutputPort/OutputPort'
 import IExpressionUpdaterInputPort, {IExpressionUpdaterRequestModel} from './InputPort/IExpressionUpdaterInputPort'
 
 class ExpressionUpdater implements IExpressionUpdaterInputPort {
-  private expression: Expression
-  private outputPort: IUseCaseOutputPort
-
-  constructor (expression: Expression, outputPort: IUseCaseOutputPort) {
-    this.expression = expression
-    this.outputPort = outputPort
-  }
+  constructor (private expression: Expression,
+    private outputPort: IUseCaseOutputPort) {}
 
   public updateExpression (inputData: IExpressionUpdaterRequestModel): void {
     const currentExpression = this.expression.getValue()

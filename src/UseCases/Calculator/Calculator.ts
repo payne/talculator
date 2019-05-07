@@ -3,13 +3,8 @@ import IUseCaseOutputPort from '../UseCaseOutputPort/OutputPort'
 import ICalculatorInputPort from './InputPort/ICalculatorInputPort'
 
 class Calculator implements ICalculatorInputPort {
-  private expression: Expression
-  private outputPort: IUseCaseOutputPort
-
-  constructor (expression: Expression, outputPort: IUseCaseOutputPort) {
-    this.expression = expression
-    this.outputPort = outputPort
-  }
+  constructor (private expression: Expression,
+    private outputPort: IUseCaseOutputPort) {}
 
   public evaluateExpression () {
     // tslint:disable-next-line: no-eval
