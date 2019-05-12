@@ -1,7 +1,9 @@
 # talculator
+
 A very simple calculator written in TypeScript, following the principles of clean architecture.
 
 ## Why?
+
 The purpose of this repo is to teach myself TypeScript and clean architecture.
 
 ## Some resources for reading about clean architecture
@@ -21,4 +23,5 @@ Clone the repo, run npm install and then npm start.
 EC clears the expression and CLV clears only the last value of the expression.
 
 ## Contributing
+
 Feel free to submit issues and open PRs.
