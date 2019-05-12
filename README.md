@@ -16,12 +16,9 @@ The purpose of this repo is to teach myself TypeScript and clean architecture.
 
 Clone the repo, run npm install and then npm start.
 
-## What are EC and CLV keys?
+## What are the EC and CLV keys?
 
-EC clears the expression and CLV clears the last value of the expression.
+EC clears the expression and CLV clears only the last value of the expression.
 
 ## Contributing
-Feel free to open issues to ask questions and make suggestions.
-
-
-Still under construction.
+Feel free to submit issues and open PRs.
