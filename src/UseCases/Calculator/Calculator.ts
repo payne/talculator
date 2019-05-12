@@ -7,12 +7,17 @@ class Calculator implements ICalculatorInputPort {
     private outputPort: IUseCaseOutputPort) {}
 
   public evaluateExpression () {
-    // tslint:disable-next-line: no-eval
-    const result = eval(this.expression.getValue())
-    const newVal = result.toString()
+    const currentVal = this.expression.getValue().replace(' ','')
+    if (this.expression.isEvaluable(currentVal)) {
+      // tslint:disable-next-line: no-eval
+      const result = eval(this.expression.getValue())
+      const newVal = result.toString()
 
-    this.expression.setValue(newVal)
-    this.outputPort.displayValue(newVal)
+      this.expression.setValue(newVal)
+      this.outputPort.displayValue(newVal)
+    } else {
+      return
+    }
   }
 }
 
