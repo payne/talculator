@@ -4,31 +4,31 @@ import Expression from './Expression'
 
 const expression = new Expression()
 
-// isEvaluatable() tests
+// isEvaluable() tests
 
-test('isEvaluatable should correctly Evaluatableate the expression',
+test('isEvaluable should correctly check the evaluability of the expression',
   (t) => {
-    const isEvaluatable = expression.isEvaluable
+    const isEvaluable = expression.isEvaluable
 
-    t.false(isEvaluatable('a0'),
+    t.false(isEvaluable('a0'),
       'a0 is not a Evaluatable numerical expression')
 
-    t.false(isEvaluatable('a'),
+    t.false(isEvaluable('a'),
       'a is not a Evaluatable numerical expression')
 
-    t.false(isEvaluatable('+'),
+    t.false(isEvaluable('+'),
       '+ is not a Evaluatable numerical expression')
 
-    t.false(isEvaluatable('.'),
+    t.false(isEvaluable('.'),
       '. is not a Evaluatable numerical expression')
 
-    t.false(isEvaluatable(' '),
+    t.false(isEvaluable(' '),
       'an empty space is not a Evaluatable numerical expression')
 
-    t.false(isEvaluatable('22/'),
+    t.false(isEvaluable('22/'),
       '22/ is not a Evaluatable numerical expression')
 
-    t.true(isEvaluatable('44'),
+    t.true(isEvaluable('44'),
       '44 is a Evaluatable numerical expression')
 
     t.end()

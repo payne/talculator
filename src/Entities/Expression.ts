@@ -10,7 +10,7 @@ class Expression {
   }
 
   /*
-  * An evaluatable expression can only start and end with a number.
+  * An evaluable expression can only start and end with a number.
   *
   * It cannot contain any alphabetical characters or invalid sequences,
   * i.e two operators cannot occur next to each other.
