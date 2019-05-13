@@ -33,9 +33,9 @@ class CalculatorUI {
       justifyContent: 'center'
     }
 
-    const mainContainer = this.createContainer({})
-    const displayContainer = this.createContainer(displayContainerStyles)
-    const keypadContainer = this.createContainer(keypadContainerStyles)
+    const mainContainer = this.createStyledContainer({})
+    const displayContainer = this.createStyledContainer(displayContainerStyles)
+    const keypadContainer = this.createStyledContainer(keypadContainerStyles)
 
     this.addChildViewsToContainer(displayContainer,
       this.display.getDisplayView())
@@ -70,7 +70,7 @@ class CalculatorUI {
     process.exit(0)
   }
 
-  private createContainer (styles: any) {
+  private createStyledContainer (styles: any) {
     const container = Container.create()
     container.setStyle(styles)
     return container
