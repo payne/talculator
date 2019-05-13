@@ -1,5 +1,5 @@
  // tslint:disable-next-line: max-line-length
-type valueType = 'digit' | 'operator' | 'decimal' | 'clearLastValue' | 'clearExpression'
+type valueType = 'digit' | 'operator' | 'decimalPoint' | 'clearLastValue' | 'clearExpression'
 export interface IExpressionUpdaterRequestModel {
   value: string,
   valueType: valueType

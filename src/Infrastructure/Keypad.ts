@@ -41,7 +41,7 @@ class Keypad {
     const equalsKey = this.createKeyArray([equals], 'equals',
       calculatorCallback, keyStyles)
 
-    const decimalPointKey = this.createKeyArray([decimalPoint],'decimal' ,
+    const decimalPointKey = this.createKeyArray([decimalPoint],'decimalPoint' ,
       expressionUpdaterCallback, keyStyles)
 
     const expressionClearKey = this.createKeyArray([expressionClear],

@@ -27,16 +27,16 @@ class ExpressionUpdater implements IExpressionUpdaterInputPort {
         newExpression = currentExpression + newVal
       }
     } else if (newValType === 'operator') {
-        if (!this.isLastTermOperator(currentExpression)) {
+        if (!this.isLastValueOperator(currentExpression)) {
           newExpression = `${currentExpression} ${newVal} `
         } else {
           newExpression = currentExpression
         }
     } else if (newValType === 'clearLastValue') {
-      newExpression = this.getSubExpressionWithoutLastTerm(currentExpression)
-    } else if (newValType === 'decimal') {
-      const lastTerm = this.getLastTerm(currentExpression)
-      if (!lastTerm.includes('.')) {
+      newExpression = this.getSubExpressionWithoutLastValue(currentExpression)
+    } else if (newValType === 'decimalPoint') {
+      const lastValue = this.getLastValue(currentExpression)
+      if (!lastValue.includes('.')) {
           newExpression = currentExpression + newVal
         } else {
           newExpression = currentExpression
@@ -50,11 +50,7 @@ class ExpressionUpdater implements IExpressionUpdaterInputPort {
     return newExpression
   }
 
-  public getLength (expressionVal: string) {
-    return expressionVal.length
-  }
-
-  public getLastTerm (expressionVal: string) {
+  public getLastValue (expressionVal: string) {
     const components = expressionVal.split(' ')
     let l = components.length - 1
 
@@ -89,7 +85,7 @@ class ExpressionUpdater implements IExpressionUpdaterInputPort {
     return (components.length === 1 && !isNaN(parseFloat(components[0])))
   }
 
-  public getSubExpressionWithoutLastTerm (expressionVal: string) {
+  public getSubExpressionWithoutLastValue (expressionVal: string) {
     const value = expressionVal
     const components = value.split('')
     let l = components.length - 1
@@ -119,8 +115,8 @@ class ExpressionUpdater implements IExpressionUpdaterInputPort {
     return
   }
 
-  public isLastTermOperator (expressionVal: string) {
-    const lastVal = this.getLastTerm(expressionVal)
+  public isLastValueOperator (expressionVal: string) {
+    const lastVal = this.getLastValue(expressionVal)
 
     return lastVal.match(/\D/) !== null && !lastVal.includes('.')
   }
