@@ -17,7 +17,7 @@ class Expression {
   *
   */
   public isEvaluable = (value: string): boolean => {
-    if (parseFloat(value.slice(-1)) && parseFloat(value.slice(0))) {
+    if (value.slice(-1).match(/\d/) && value.slice(0,1).match(/\d/)) {
       if (value.match(/[a-zA-z]/) || value.match(/[\+\-\*\/][\+\-\*\/]/)) {
         return false
       } else { return true }

@@ -33,7 +33,12 @@ class ExpressionUpdater implements IExpressionUpdaterInputPort {
           newExpression = currentExpression
         }
     } else if (newValType === 'clearLastValue') {
-      newExpression = this.getSubExpressionWithoutLastValue(currentExpression)
+      if (currentExpression === 'Infinity') {
+          newExpression = '0'
+        } else {
+          newExpression =
+            this.getSubExpressionWithoutLastValue(currentExpression)
+        }
     } else if (newValType === 'decimalPoint') {
       const lastValue = this.getLastValue(currentExpression)
       if (!lastValue.includes('.')) {
