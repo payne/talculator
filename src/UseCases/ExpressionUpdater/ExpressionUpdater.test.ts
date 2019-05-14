@@ -10,45 +10,6 @@ const expressionUpdater = new ExpressionUpdater(expression, {
   }
 })
 
-// isNumber tests
-
-test('isNumber should return whether the expression is a number or not',
-  (t) => {
-  const isNumber = expressionUpdater.isNumber.bind(expressionUpdater)
-
-  t.true(isNumber('22'), '22 is a number')
-
-  t.false(isNumber('26 - 3'), '26 - 3 is not a number')
-
-  t.true(isNumber('0.2'), '0.2 is a number')
-
-  t.true(isNumber('.2'), '.2 is a number')
-
-  t.false(isNumber('0.2 + .34 - '), '0.2 + .34 - is not a number')
-
-  t.false(isNumber(' + '), '+ is not a number')
-
-  t.false(isNumber('_'), '- is not a number')
-
-  t.end()
-})
-
-// getLastNumber tests
-
-test('getLastNumber should return the last number from the expression', (t) => {
-  const getLastNumber = expressionUpdater.getLastNumber.bind(expressionUpdater)
-
-  t.equal(getLastNumber('22 + 33 - '), '33')
-
-  t.equal(getLastNumber('22 + 33'), '33')
-
-  t.equal(getLastNumber('22 + .33'), '.33')
-
-  t.equal(getLastNumber('0.03 - '), '0.03')
-
-  t.end()
-})
-
 // getLastValue tests
 
 test('getLastValue should return the last value from the expression', (t) => {
@@ -65,7 +26,7 @@ test('getLastValue should return the last value from the expression', (t) => {
 
 // getSubExpressionWithoutLastValue tests
 
-test('getSubExpressionWithoutLastValue should return everything but the \
+test('getSubExpressionWithoutLastValue should return everything but the\
   last value from the expression', (t) => {
   const getSubExpressionWithoutLastValue =
     expressionUpdater.getSubExpressionWithoutLastValue.bind(expressionUpdater)

@@ -21,7 +21,7 @@ class ExpressionUpdater implements IExpressionUpdaterInputPort {
     const newValType = inputData.valueType
 
     if (newValType === 'digit') {
-      if (this.isZero(currentExpression)) {
+      if (currentExpression === '0') {
         newExpression = newVal
       } else {
         newExpression = currentExpression + newVal
@@ -57,37 +57,8 @@ class ExpressionUpdater implements IExpressionUpdaterInputPort {
 
   public getLastValue (expressionVal: string) {
     const components = expressionVal.split(' ')
-    let l = components.length - 1
-
-    // make sure that the last child is not an empty string or a space
-    while (l >= 0) {
-    if (!components[l]) {
-        l -= 1
-      } else {
-        break
-      }
-    }
-
+    const l = components.length - 1
     return components[l]
-  }
-
-  public isZero (expressionVal: string) {
-    return expressionVal === '0'
-  }
-
-  public isNumber (expressionVal: string) {
-    const value = expressionVal
-
-    if (!value) { return false }
-
-    const components = value.split(' ')
-
-    /*
-     *  An expression that is a number has only one component
-     *  and it is not NaN
-     */
-
-    return (components.length === 1 && !isNaN(parseFloat(components[0])))
   }
 
   public getSubExpressionWithoutLastValue (expressionVal: string) {
@@ -105,24 +76,8 @@ class ExpressionUpdater implements IExpressionUpdaterInputPort {
     return value.substr(0, l)
   }
 
-  public getLastNumber (expressionVal: string) {
-    const components = expressionVal.split(' ')
-    let l = components.length - 1
-
-    while (l >= 0) {
-      const num = parseFloat(components[l])
-      if (!isNaN(num)) {
-        return components[l]
-      } else {
-        l -= 1
-      }
-    }
-    return
-  }
-
   public isLastValueOperator (expressionVal: string) {
     const lastVal = this.getLastValue(expressionVal)
-
     return lastVal.match(/\D/) !== null && !lastVal.includes('.')
   }
 }

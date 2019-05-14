@@ -23,7 +23,7 @@
     "start": "npm run build:live",
     "build": "tsc -p .",
     "build:live": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
-    "test": "ts-node node_modules/tape/bin/tape src/**/**.test.ts | faucet"
+    "test": "ts-node node_modules/tape/bin/tape src/**/**.test.ts src/**/**/**.test.ts | faucet"
   },
   "repository": {
     "type": "git",
